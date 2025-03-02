@@ -209,7 +209,10 @@ public class ApiDataTypesDTO {
         }
 
         public boolean isValid() {
-            return coordinate.latitude > 0 && coordinate.longitude > 0;
+            // Coordinate class initialises with zero lat,long.
+            // Let's assume that middle of the ocean means unset, better than the previous only
+            // one quarter of the world being valid.
+            return coordinate.latitude != 0 && coordinate.longitude != 0;
         }
 
         public double getLatitude() {

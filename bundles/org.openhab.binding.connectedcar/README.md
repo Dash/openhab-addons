@@ -1,3 +1,6 @@
+# BRANCH INFO
+[This branch/repo(https://github.com/Dash/openhab-addons) has been forked from https://github.com/wrosenauer/openhab-addons who seems to have gone quiet, I'm not the maintainer of this project, nor have any idea what I'm doing!
+
 # ConnectedCar Binding
 
 This binding integrates the various connected car service provided into openHAB.
