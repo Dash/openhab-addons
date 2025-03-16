@@ -105,6 +105,7 @@ public class BindingConstants {
     public static final String CHANNEL_CONTROL_ENGINE = "engine";
     public static final String CHANNEL_CONTROL_RESTART = "restart";
     public static final String CHANNEL_CONTROL_CHARGER = "charge";
+    public static final String CHANNEL_CONTROL_CHARGE_MODE = "chargingMode";
     public static final String CHANNEL_CONTROL_TARGETCHG = "targetChgLvl";
     public static final String CHANNEL_CONTROL_CLIMATER = "climater";
     public static final String CHANNEL_CONTROL_TARGET_TEMP = "targetTemperature";

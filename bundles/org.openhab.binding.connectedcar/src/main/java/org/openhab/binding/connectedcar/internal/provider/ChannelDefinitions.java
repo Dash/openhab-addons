@@ -477,6 +477,7 @@ public class ChannelDefinitions {
         add("", "", CHANNEL_CONTROL_ENGINE, ITEMT_SWITCH, group, null, false, false);
         add("", "", CHANNEL_CONTROL_RESTART, ITEMT_SWITCH, group, null, false, false);
         add("", "", CHANNEL_CONTROL_CHARGER, ITEMT_SWITCH, group, null, false, false);
+        add("", "", CHANNEL_CONTROL_CHARGE_MODE, ITEMT_STRING, group, null, false, false);
         add("", "", CHANNEL_CONTROL_TARGETCHG, ITEMT_PERCENT, group, null, false, false);
         add("", "", CHANNEL_CONTROL_CLIMATER, ITEMT_SWITCH, group, null, false, false);
         add("", "", CHANNEL_CONTROL_TARGET_TEMP, ITEMT_TEMP, group, SIUnits.CELSIUS);

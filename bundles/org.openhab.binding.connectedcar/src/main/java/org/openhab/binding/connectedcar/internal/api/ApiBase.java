@@ -373,6 +373,11 @@ public class ApiBase extends ApiRequestQueue implements ApiBrandInterface, Brand
     }
 
     @Override
+    public String controlChargeMode(String mode) throws ApiException {
+        return UNSUPPORTED;
+    }
+
+    @Override
     public String controlMaxCharge(int maxCurrent) throws ApiException {
         return UNSUPPORTED;
     }

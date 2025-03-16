@@ -166,7 +166,6 @@ public class WeConnectApi extends ApiWithOAuth implements BrandAuthenticator {
             status.climatisation.climatisationSettings.value.targetTemperature_K = SIUnits.CELSIUS
                     .getConverterToAny(Units.KELVIN).convert(tempC);
             String payload = gson.toJson(status.climatisation.climatisationSettings.value);
-            payload = payload.replaceAll("\"carCapturedTimestamp\".*,", payload);
             return sendSettings(WCSERVICE_CLIMATISATION, payload);
         } catch (IncommensurableException e) {
             throw new ApiException("Unable to convert temperature", e);
@@ -178,7 +177,6 @@ public class WeConnectApi extends ApiWithOAuth implements BrandAuthenticator {
         WCVehicleStatusData status = getWCStatus();
         status.climatisation.climatisationSettings.value.windowHeatingEnabled = start;
         String payload = gson.toJson(status.climatisation.climatisationSettings.value);
-        payload = payload.replaceAll("\"carCapturedTimestamp\".*,", payload);
         return sendSettings(WCSERVICE_CLIMATISATION, payload);
     }
 
@@ -189,11 +187,20 @@ public class WeConnectApi extends ApiWithOAuth implements BrandAuthenticator {
     }
 
     @Override
+    public String controlChargeMode(String mode) throws ApiException {
+        WCVehicleStatusData status = getWCStatus();
+        status.charging.chargeMode.value.preferredChargeMode = mode;
+        String payload = gson.toJson(status.charging.chargeMode.value);
+        // Mode can be (it seems) "manual" or "preferredChargingTimes"
+        payload = String.format("{ \"preferredChargeMode\": \"%s\" }", mode);
+        return sendMode(WCSERVICE_CHARGING, payload);
+    }
+
+    @Override
     public String controlMaxCharge(int maxCurrent) throws ApiException {
         WCVehicleStatusData status = getWCStatus();
         status.charging.chargingSettings.value.maxChargeCurrentAC = "" + maxCurrent;
         String payload = gson.toJson(status.charging.chargingSettings.value);
-        payload = payload.replaceAll("\"carCapturedTimestamp\".*,", payload);
         return sendSettings(WCSERVICE_CHARGING, payload);
     }
 
@@ -202,7 +209,6 @@ public class WeConnectApi extends ApiWithOAuth implements BrandAuthenticator {
         WCVehicleStatusData status = getWCStatus();
         status.charging.chargingSettings.value.targetSOC_pct = targetLevel;
         String payload = gson.toJson(status.charging.chargingSettings.value);
-        payload = payload.replaceAll("\"carCapturedTimestamp\".*,", payload);
         return sendSettings(WCSERVICE_CHARGING, payload);
     }
 
@@ -224,6 +230,12 @@ public class WeConnectApi extends ApiWithOAuth implements BrandAuthenticator {
     private String sendSettings(String service, String body) throws ApiException {
         ApiHttpMap headers = createParameters();
         http.put("vehicles/{2}/" + service + "/settings", headers.getHeaders(), body);
+        return API_REQUEST_STARTED;
+    }
+
+    private String sendMode(String service, String body) throws ApiException {
+        ApiHttpMap headers = createParameters();
+        http.put("vehicles/{2}/" + service + "/mode", headers.getHeaders(), body);
         return API_REQUEST_STARTED;
     }
 

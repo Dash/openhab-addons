@@ -96,8 +96,10 @@ public class WeConnectServiceStatus extends ApiBaseService {
                 CHANNEL_CHARGER_CHGLVL);
 
         addChannels(channels, CHANNEL_GROUP_CHARGER, status.charging != null && status.charging.chargingStatus != null,
-                CHANNEL_CONTROL_CHARGER, CHANNEL_CHARGER_CHG_STATE, CHANNEL_CHARGER_MODE, CHANNEL_CHARGER_REMAINING,
-                CHANNEL_CHARGER_MAXCURRENT, CHANNEL_CONTROL_TARGETCHG, CHANNEL_CHARGER_POWER, CHANNEL_CHARGER_RATE);
+                CHANNEL_CHARGER_CHG_STATE, CHANNEL_CHARGER_MODE, CHANNEL_CHARGER_REMAINING, CHANNEL_CHARGER_MAXCURRENT,
+                CHANNEL_CONTROL_TARGETCHG, CHANNEL_CHARGER_POWER, CHANNEL_CHARGER_RATE);
+        addChannels(channels, CHANNEL_GROUP_CONTROL, status.charging != null && status.charging.chargingStatus != null,
+                CHANNEL_CONTROL_CHARGER);
         addChannels(channels, CHANNEL_GROUP_CHARGER, status.charging != null && status.charging.plugStatus != null,
                 CHANNEL_CHARGER_PLUG_STATE, CHANNEL_CHARGER_LOCK_STATE);
         addChannels(channels, CHANNEL_GROUP_CLIMATER,

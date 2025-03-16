@@ -24,6 +24,7 @@ import org.openhab.binding.connectedcar.internal.provider.ChannelDefinitions;
 import org.openhab.binding.connectedcar.internal.util.TextResources;
 import org.openhab.core.library.types.DecimalType;
 import org.openhab.core.library.types.OnOffType;
+import org.openhab.core.library.types.StringType;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.types.Command;
@@ -91,6 +92,10 @@ public class WeConnectVehicleHandler extends ThingBaseHandler {
                 case CHANNEL_CONTROL_WINHEAT:
                     action = switchOn ? "startWindowHeat" : "stopWindowHeat";
                     actionStatus = api.controlWindowHeating(switchOn);
+                    break;
+                case CHANNEL_CONTROL_CHARGE_MODE:
+                    action = ((StringType) command).toString();
+                    actionStatus = api.controlChargeMode(action);
                     break;
                 default:
                     processed = false;

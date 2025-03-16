@@ -72,6 +72,8 @@ public interface ApiBrandInterface {
 
     String controlCharger(boolean start) throws ApiException;
 
+    String controlChargeMode(String mode) throws ApiException;
+
     String controlMaxCharge(int maxCurrent) throws ApiException;
 
     String controlTargetChgLevel(int targetLevel) throws ApiException;

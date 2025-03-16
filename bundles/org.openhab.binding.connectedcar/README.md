@@ -1,5 +1,6 @@
 # BRANCH INFO
-[This branch/repo(https://github.com/Dash/openhab-addons) has been forked from https://github.com/wrosenauer/openhab-addons who seems to have gone quiet, I'm not the maintainer of this project, nor have any idea what I'm doing!
+[This branch/repo](https://github.com/Dash/openhab-addons) has been forked from https://github.com/wrosenauer/openhab-addons who seems to have gone quiet, I'm not the maintainer of this project, nor have any idea what I'm doing!
+Though I have fixed a few VW things.
 
 # ConnectedCar Binding
 
@@ -423,7 +424,7 @@ If you don't already have one you need to create a Volkswagen ID and add the veh
 | charger     | chargingLevel*            | Number:Dimensionless     | yes       | Current charging level in percent for an electrical car                                 |
 |             | charge*                   | Switch                   | no        | Turn charger on/off                                                                     |
 |             | chargingState*            | String                   | yes       | Current charging status                                                                 |
-|             | chargingMode*             | String                   | yes       | Indicates the selected charging mode                                                    |
+|             | chargingMode*             | String                   | no        | Indicates the selected charging mode (manual or preferredChargingTimes)                 |
 |             | remainingChargingTime*    | Number:Time              | yes       | Time to reach a fully charged battery                                                   |
 |             | maxCurrent*               | String                   | yes       | Maximum current for the charging process                                                |
 |             | targetChgLvl*             | Number:Dimensionless     | yes       | Charging stops automatically when the given level is reached                            |
